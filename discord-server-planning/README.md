@@ -13,4 +13,10 @@ Below is a summary of the current plans for the Python Group Programming Discord
 - Post information about Discord server/coding tutorials etc on LinkedIn including information to join group.
 
 ### Resources/Links:
-- N/A
+- [Discord Invite Link](https://discord.gg/UgxHnA)
+
+### discord.py bot framework resources
+- [Documentation](https://discordpy.readthedocs.io/en/latest)
+- [RealPython Discord Bot Tutorial](https://realpython.com/how-to-make-a-discord-bot-python/)
+- [Cogs Example](https://gist.github.com/OneEyedKnight/f0411f9a5e9dea23b96be0bf6dd86d2d)
+
