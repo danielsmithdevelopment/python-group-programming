@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# creds
+flask-firebase-crud-api/see-the-greens-firebase-adminsdk-5fe3q-84ba5e43d0.json
