@@ -1,1 +1,35 @@
 ## Dockerized Python Flask API
+
+### API Signup
+
+Unauthenticated requests will be rejected
+
+`curl -X GET http://localhost:8080/list`
+
+```
+{"message":"No token provided"}
+```
+
+Signup to create a new user
+
+`curl -X GET -F 'email=test@email.com'-F 'password=testpass' http://localhost:8080/api/signup`
+
+```
+{"message":"Successfully created user L6hafl2TVnrT1Qk2oiy2"}
+```
+
+Login using credentials to retrieve JWT token
+
+`curl -X GET -F 'email=example@email.com'-F 'password=examplepass' http://localhost:8080/api/token`
+
+```
+"token":"eyJhbGciOiJSUzImtpZCI6IjUxMDM2YWYyZDgzO4NDJhZjQzY2VjZmJiZYWYxYTc1OGVlYTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZSVlLXRoZS1ncmVlbnMiLCJhdWQiOiJzZWUtdGhlLWdyZWVucyIsImF1ddGltZSI6MTU5OTE1ODI3MywidXNlcl9pZCI6IlB2Ukw2aGFmbDJUVm5ONXJUMVFrTTdjMm9peTIiJQdlJMNmhhZmwyVFZuTjVyVDFRa003YzJvaXkyIiwiaWF0IjoxNTk5MTU4MjczLCJleHAiOjE1OTkxNjE4NzMtYWlsIjoidGVzdEBlbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidGVzdEBlbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmliOiJwYXNzd29yZCJ9fQ.piHg4pxLprTsr25fyQggX0q4GNrSVTX193OQGsHGa-s1CgV2LeXd71yYBc_JMkXFFHziDBgbgw5fIflRXXcI9qt--ET-Nk0wVg66KoWTpsMnK34bdTVksQX7l7Q0hKVaIAMh7lvWcEK_6hxR5zFytxFTo-GHi0TVv9ZRnowlQwMZPzWn2svADJQK8qYXSMwVJ4OSa7YXKa6AaiUxYuAmKq7WAD1vqe5CwMshxeXgERoUVEIhVycKM4y0m8iDmUTi2FHTy1u4PWSTvErPQoZ7urk11JVcPwKtOVW10W1Mav1wKo1WrG-F"}
+```
+
+Use JWT token to submit authenticated requests to protected endpoints
+
+`curl -X GET -H 'authorization: eyJhbGciOiJSUzImtpZCI6IjUxMDM2YWYyZDgzO4NDJhZjQzY2VjZmJiZYWYxYTc1OGVlYTIiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZSVlLXRoZS1ncmVlbnMiLCJhdWQiOiJzZWUtdGhlLWdyZWVucyIsImF1ddGltZSI6MTU5OTE1ODI3MywidXNlcl9pZCI6IlB2Ukw2aGFmbDJUVm5ONXJUMVFrTTdjMm9peTIiJQdlJMNmhhZmwyVFZuTjVyVDFRa003YzJvaXkyIiwiaWF0IjoxNTk5MTU4MjczLCJleHAiOjE1OTkxNjE4NzMtYWlsIjoidGVzdEBlbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidGVzdEBlbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmliOiJwYXNzd29yZCJ9fQ.piHg4pxLprTsr25fyQggX0q4GNrSVTX193OQGsHGa-s1CgV2LeXd71yYBc_JMkXFFHziDBgbgw5fIflRXXcI9qt--ET-Nk0wVg66KoWTpsMnK34bdTVksQX7l7Q0hKVaIAMh7lvWcEK_6hxR5zFytxFTo-GHi0TVv9ZRnowlQwMZPzWn2svADJQK8qYXSMwVJ4OSa7YXKa6AaiUxYuAmKq7WAD1vqe5CwMshxeXgERoUVEIhVycKM4y0m8iDmUTi2FHTy1u4PWSTvErPQoZ7urk11JVcPwKtOVW10W1Mav1wKo1WrG-F' http://localhost:8080/list`
+
+```
+[]
+```
